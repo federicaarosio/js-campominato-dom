@@ -36,3 +36,36 @@ function generateSquare() {
     generateSquareElement.classList.add("square");
     return generateSquareElement;
 }
+
+
+function getRandomNumber(minNumber, maxNumber){
+    return Math.floor( Math.random() *(maxNumber - minNumber + 1) + minNumber);
+}
+
+
+
+
+
+// Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
+//creo una funzione che generi un numero randomico unico
+
+
+function generateBombsArray(bombsNumber) {
+    //mi creo un array vuoto
+    const bombsArray = [];
+
+    //finché la lunghezza dell'array è minore del numero di bombe desiderato (per noi 16)
+        //mi genero un numero random da 1 a 100
+        //se bombsArray NON include il numero generato
+            //lo aggiungo
+
+    while (bombsArray.length < bombsNumber) {
+        const newBomb = getRandomNumber(1, 100);
+
+        if (!bombsArray.includes(newBomb)) {
+            bombsArray.push(newBomb)
+        }
+    }
+    return bombsArray;
+}
+
