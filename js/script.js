@@ -8,6 +8,7 @@ playBtnElement.addEventListener("click", function() {
     
     gridWrapperElement.innerHTML = "";
     
+    //Per cambiare numbero bombe qui!
     const bombs = generateBombsArray(16);
     console.log(bombs);
     
@@ -22,7 +23,10 @@ playBtnElement.addEventListener("click", function() {
         gridWrapperElement.appendChild(currentSquare);
         
         currentSquare.addEventListener("click", function(){
-            if (bombs.includes(squareContent)) {
+
+            if (finalScore === 100 - bombs) {
+                alert(`You won! Your score is ${finalScore}`);
+            } else if (bombs.includes(squareContent)) {
                 this.classList.add("bg-red");
                 alert(`game over! Your score is ${finalScore}`);
             } else {
@@ -57,17 +61,17 @@ function getRandomNumber(minNumber, maxNumber){
 
 
 // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
+//Funzione che mi genera un array con 16 numeri random non ripetuti
+//mi creo un array vuoto
+//finché la lunghezza dell'array è minore del numero di bombe desiderato (per noi 16)
+    //mi genero un numero random da 1 a 100
+    //se bombsArray NON include il numero generato
+        //lo aggiungo
 
-//Funzione che mi genera un array con 16 numeri random
 
 function generateBombsArray(bombsNumber) {
-    //mi creo un array vuoto
     const bombsArray = [];
 
-    //finché la lunghezza dell'array è minore del numero di bombe desiderato (per noi 16)
-        //mi genero un numero random da 1 a 100
-        //se bombsArray NON include il numero generato
-            //lo aggiungo
 
     while (bombsArray.length < bombsNumber) {
         const newBomb = getRandomNumber(1, 100);
