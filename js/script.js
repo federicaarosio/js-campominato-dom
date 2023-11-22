@@ -1,26 +1,37 @@
 
 //Seleziono il bottone
 const playBtnElement = document.querySelector("button.play");
-console.log(playBtnElement);
+const selectDifficultyEl = document.querySelector("select#select-difficulty")
 
 //Click sul bottone genera nuova griglia
 playBtnElement.addEventListener("click", function() {
     
     gridWrapperElement.innerHTML = "";
     
-    //Per cambiare numbero bombe qui!
+    //Per cambiare numbero bombe QUI!
     const bombs = generateBombsArray(16);
-    console.log(bombs);
+    console.log(`bombs position: ${bombs}`);
     
+    //Livello difficoltà
+    const difficulty = selectDifficultyEl.value
+    console.log(difficulty);
+    let cellsPerRow = Math.sqrt(difficulty);
+
+
+    //Punteggio di partenza   
     let finalScore = 0;
 
-    for (let i = 1 ; i <= 100 ; i++){
+    for (let i = 1 ; i <= difficulty ; i++){
         
         const currentSquare = generateSquare();
         
         const squareContent = i;
         currentSquare.innerHTML += `<span> ${squareContent} </span>`;
         gridWrapperElement.appendChild(currentSquare);
+
+        currentSquare.style.width = `calc(100% / ${cellsPerRow})`;
+        currentSquare.style.height = `calc(100% / ${cellsPerRow})`;
+
         
         currentSquare.addEventListener("click", function(){
 
@@ -33,6 +44,7 @@ playBtnElement.addEventListener("click", function() {
                 this.classList.add('bg-light-blue');
                 console.log(squareContent);
                 finalScore += 1;
+                console.log(`Your current score is: ${finalScore}`);
             }
         });
     }

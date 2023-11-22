@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Griglia Campo Minato</title>
+    <title>Campo Minato</title>
 
     <!-- Custom css -->
     <link rel="stylesheet" href="./css/style.css">
@@ -15,9 +15,18 @@
             <h1>
                 Campo Minato
             </h1>
-            <button class="play">
-                Play
-            </button>
+            <div>
+                <select name="select-difficulty" id="select-difficulty">
+                    <option value="100">Jellyfish (easy)</option>
+                    <option value="81">Seahorse (medium)</option>
+                    <option value="49">Octopus (hard)</option>
+                </select>
+                
+                <button class="play">
+                    Play
+                </button>
+
+            </div>
         </nav>
     </header>
     <main>
