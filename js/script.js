@@ -8,6 +8,9 @@ playBtnElement.addEventListener("click", function() {
     
     gridWrapperElement.innerHTML = "";
 
+    const bombs = generateBombsArray(16);
+    console.log(bombs);
+
     
     for (let i = 1 ; i <= 100 ; i++){
         //genero cella
@@ -18,8 +21,12 @@ playBtnElement.addEventListener("click", function() {
         gridWrapperElement.appendChild(currentSquare);
         
         currentSquare.addEventListener("click", function(){
-            this.classList.toggle('bg-light-blue');
-            console.log(squareContent);
+            if (bombs.includes(squareContent)) {
+                this.classList.add("bg-red");
+            } else {
+                this.classList.add('bg-light-blue');
+                console.log(squareContent);
+            }
         });
     }
 });
@@ -47,8 +54,8 @@ function getRandomNumber(minNumber, maxNumber){
 
 
 // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
-//creo una funzione che generi un numero randomico unico
 
+//Funzione che mi genera un array con 16 numeri random
 
 function generateBombsArray(bombsNumber) {
     //mi creo un array vuoto
@@ -63,7 +70,7 @@ function generateBombsArray(bombsNumber) {
         const newBomb = getRandomNumber(1, 100);
 
         if (!bombsArray.includes(newBomb)) {
-            bombsArray.push(newBomb)
+            bombsArray.push(newBomb);
         }
     }
     return bombsArray;
