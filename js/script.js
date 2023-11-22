@@ -7,15 +7,16 @@ console.log(playBtnElement);
 playBtnElement.addEventListener("click", function() {
     
     gridWrapperElement.innerHTML = "";
-
+    
     const bombs = generateBombsArray(16);
     console.log(bombs);
-
     
+    let finalScore = 0;
+
     for (let i = 1 ; i <= 100 ; i++){
-        //genero cella
+        
         const currentSquare = generateSquare();
-        //popolo cella con numeri
+        
         const squareContent = i;
         currentSquare.innerHTML += `<span> ${squareContent} </span>`;
         gridWrapperElement.appendChild(currentSquare);
@@ -23,9 +24,11 @@ playBtnElement.addEventListener("click", function() {
         currentSquare.addEventListener("click", function(){
             if (bombs.includes(squareContent)) {
                 this.classList.add("bg-red");
+                alert(`game over! Your score is ${finalScore}`);
             } else {
                 this.classList.add('bg-light-blue');
                 console.log(squareContent);
+                finalScore += 1;
             }
         });
     }
