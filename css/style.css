@@ -15,9 +15,15 @@ header nav {
     align-items: center;
 }
 
+button, select {
+    padding: .2rem .4rem;
+}
+
 section {
     background-color: aquamarine;
-    padding: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    text-align: center;
 }
 
 div.grid-wrapper {
@@ -26,6 +32,8 @@ div.grid-wrapper {
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    border: 1px solid black;
+    margin-bottom: 1rem;
 }
 
 .square {
