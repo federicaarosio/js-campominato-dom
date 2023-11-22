@@ -3,16 +3,18 @@
 const playBtnElement = document.querySelector("button.play");
 const selectDifficultyEl = document.querySelector("select#select-difficulty")
 
-//messaggio "have fun!"
+//messaggio "have fun!" -> current score
 const message = document.createElement("p")
 const sectionGame = document.querySelector("section.minefield-game")
 message.innerHTML= "Have fun!";
 sectionGame.appendChild(message);
 
-//Click sul bottone genera nuova griglia
+
+//Al click sul bottone genero nuova griglia
 playBtnElement.addEventListener("click", function() {
     
     gridWrapperElement.innerHTML = "";
+    message.innerHTML= "Have fun!";
     
     //Per cambiare numbero bombe QUI!
     const bombs = generateBombsArray(16);
@@ -40,7 +42,7 @@ playBtnElement.addEventListener("click", function() {
         
         currentSquare.addEventListener("click", function(){
 
-            if (finalScore === difficulty - bombs) {
+            if (finalScore = difficulty - bombs - 2) {
                 message.innerHTML = `You won! Your score is ${finalScore}`;
             } else if (bombs.includes(squareContent)) {
                 this.classList.add("bg-red");
@@ -74,18 +76,6 @@ function generateSquare() {
 function getRandomNumber(minNumber, maxNumber){
     return Math.floor( Math.random() *(maxNumber - minNumber + 1) + minNumber);
 }
-
-
-
-
-
-// Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
-//Funzione che mi genera un array con 16 numeri random non ripetuti
-//mi creo un array vuoto
-//finché la lunghezza dell'array è minore del numero di bombe desiderato (per noi 16)
-    //mi genero un numero random da 1 a 100
-    //se bombsArray NON include il numero generato
-        //lo aggiungo
 
 
 function generateBombsArray(bombsNumber) {
