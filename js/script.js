@@ -3,14 +3,13 @@
 const playBtnElement = document.querySelector("button.play");
 const selectDifficultyEl = document.querySelector("select#select-difficulty")
 
-//messaggio "have fun!" -> current score
+//messaggio "have fun!"
 const message = document.createElement("p")
 const sectionGame = document.querySelector("section.minefield-game")
 message.innerHTML= "Have fun!";
 sectionGame.appendChild(message);
 
-
-//Al click sul bottone genero nuova griglia
+//Click sul bottone genera nuova griglia
 playBtnElement.addEventListener("click", function() {
     
     gridWrapperElement.innerHTML = "";
@@ -42,7 +41,7 @@ playBtnElement.addEventListener("click", function() {
         
         currentSquare.addEventListener("click", function(){
 
-            if (finalScore = difficulty - bombs - 2) {
+            if (finalScore === difficulty - bombs) {
                 message.innerHTML = `You won! Your score is ${finalScore}`;
             } else if (bombs.includes(squareContent)) {
                 this.classList.add("bg-red");
@@ -78,6 +77,7 @@ function getRandomNumber(minNumber, maxNumber){
 }
 
 
+
 function generateBombsArray(bombsNumber) {
     const bombsArray = [];
 
@@ -90,4 +90,3 @@ function generateBombsArray(bombsNumber) {
     }
     return bombsArray;
 }
-
