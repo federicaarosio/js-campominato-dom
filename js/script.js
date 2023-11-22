@@ -40,18 +40,17 @@ playBtnElement.addEventListener("click", function() {
         
         currentSquare.addEventListener("click", function(){
 
-            if (finalScore === 100 - bombs) {
-                // alert(`You won! Your score is ${finalScore}`);
+            if (finalScore === difficulty - bombs) {
                 message.innerHTML = `You won! Your score is ${finalScore}`;
             } else if (bombs.includes(squareContent)) {
                 this.classList.add("bg-red");
                 message.innerHTML = `game over! Your score is ${finalScore}`;
-                // alert(`game over! Your score is ${finalScore}`);
+            } else if (currentSquare.classList.contains("point-given")) {
+                message.innerHTML = `Your current score is: ${finalScore}`;
             } else {
-                this.classList.add('bg-light-blue');
+                this.classList.add("bg-light-blue", "point-given");
                 console.log(squareContent);
                 finalScore += 1;
-                console.log(`Your current score is: ${finalScore}`);
                 message.innerHTML = `Your current score is: ${finalScore}`;
             }
         });
